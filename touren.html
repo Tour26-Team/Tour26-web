@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tour26</title>
+    <link rel="stylesheet" href="styles/touren.css" />
+    <link rel="icon" href="assets/logo/Tour26_Logo_Small.png" />
+
+    <script src="utils.js" defer></script>
+    <script type="module" src="dataManger.js" defer></script>
+    <script type="module" src="auth/authManager.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <div class="navContainer">
+        <div class="navHeader">
+          <img
+            class="navHeaderLogo"
+            src="assets/logo/Tour26Logo.png"
+            alt="Tour26 Logo"
+          />
+          <button id="navHeaderBtn">
+            <img
+              class="navHeaderBtnIcon"
+              src="assets/icons/sidebar.svg"
+              alt="Sidebar Icon"
+            />
+          </button>
+        </div>
+        <ul class="navList">
+          <li class="navListItem">
+            <a
+              href=""
+              class="navListItemBtn navListItemBtnActive"
+              title="Touren"
+              ><svg
+                class="navListItemIcon"
+                viewBox="0 -960 960 960"
+                xmlns="http://www.w3.org/2000/svg"
+                xml:space="preserve"
+                xmlns:serif="http://www.serif.com/"
+                style="
+                  fill-rule: evenodd;
+                  clip-rule: evenodd;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 1.5;
+                "
+              >
+                <path
+                  d="M207.62-92.31q-77.93 0-132.77-54.92Q20-202.15 20-280.08 20-358 74.92-412.85q54.93-54.84 132.85-54.84 77.92 0 132.77 54.92 54.84 54.92 54.84 132.85 0 77.92-54.92 132.77-54.92 54.84-132.84 54.84Zm90.46-97.21q37.31-37.22 37.31-90.39t-37.22-90.48q-37.22-37.3-90.39-37.3-53.16 0-90.47 37.21Q80-333.26 80-280.09t37.22 90.48q37.21 37.3 90.38 37.3 53.17 0 90.48-37.21ZM450-210v-198.85L316.62-517.39q-10.47-9.46-15.89-22.13-5.42-12.67-5.42-26.65 0-13.98 5.73-26.37 5.73-12.38 15.58-22.23l114.3-114.31q10.47-10.46 24.22-15.88 13.76-5.42 28.85-5.42 15.09 0 28.86 5.42 13.76 5.42 24.23 15.88l76 76q28 28 63.42 44.2 35.42 16.19 75.04 18.11V-530q-52.77-1.92-100.23-22.96t-84.39-57.96L528-649.85 420.46-542.31 510-448.77V-210h-60Zm112.73-552.73q-20.42-20.42-20.42-49.58 0-29.15 20.42-49.57 20.42-20.43 49.58-20.43 29.15 0 49.57 20.43 20.43 20.42 20.43 49.57 0 29.16-20.43 49.58-20.42 20.42-49.57 20.42-29.16 0-49.58-20.42Zm189.5 670.42q-77.92 0-132.77-54.92-54.84-54.92-54.84-132.85 0-77.92 54.92-132.77 54.92-54.84 132.84-54.84 77.93 0 132.77 54.92Q940-357.85 940-279.92q0 77.92-54.92 132.77-54.93 54.84-132.85 54.84Zm90.46-97.21Q880-226.74 880-279.91t-37.22-90.48q-37.21-37.3-90.38-37.3-53.17 0-90.48 37.21-37.31 37.22-37.31 90.39t37.22 90.48q37.22 37.3 90.39 37.3 53.16 0 90.47-37.21Z"
+                /></svg
+              ><span class="navListItemText">Touren</span></a
+            >
+          </li>
+          <li class="navListItem">
+            <a href="" class="navListItemBtn" title="Ranking">
+              <svg
+                class="navListItemIcon"
+                viewBox="0 -960 960 960"
+                xmlns="http://www.w3.org/2000/svg"
+                xml:space="preserve"
+                xmlns:serif="http://www.serif.com/"
+                style="
+                  fill-rule: evenodd;
+                  clip-rule: evenodd;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 1.5;
+                "
+              >
+                <path
+                  d="M151.54-140q-15.36 0-25.76-10.4-10.39-10.39-10.39-25.76v-367.53q0-15.62 10.39-25.96Q136.18-580 151.54-580h120.77q15.36 0 25.76 10.4 10.39 10.39 10.39 25.76v367.53q0 15.62-10.39 25.96Q287.67-140 272.31-140H151.54Zm264.35 0q-15.58 0-25.93-10.4-10.34-10.39-10.34-25.76v-607.68q0-15.37 10.39-25.76Q400.4-820 415.77-820h128.34q15.58 0 25.93 10.4 10.34 10.39 10.34 25.76v607.68q0 15.37-10.39 25.76Q559.6-140 544.23-140H415.89Zm271.8 0q-15.36 0-25.76-10.35-10.39-10.35-10.39-25.65v-288.01q0-15.3 10.39-25.64Q672.33-500 687.69-500h120.77q15.36 0 25.76 10.35 10.39 10.35 10.39 25.65v288.01q0 15.3-10.39 25.64Q823.82-140 808.46-140H687.69Z"
+                /></svg
+              ><span class="navListItemText">Ranking</span></a
+            >
+          </li>
+          <li class="navListItem">
+            <a href="" class="navListItemBtn" title="Routen Vorschläge">
+              <svg
+                class="navListItemIcon"
+                viewBox="0 -960 960 960"
+                xmlns="http://www.w3.org/2000/svg"
+                xml:space="preserve"
+                xmlns:serif="http://www.serif.com/"
+                style="
+                  fill-rule: evenodd;
+                  clip-rule: evenodd;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 1.5;
+                "
+              >
+                <path
+                  d="M253.92-173.92Q210-217.85 210-280v-333.92q-35-13-57.5-41.58T130-719.87q0-45.89 32.07-78.01Q194.14-830 239.95-830q45.82 0 77.93 32.12Q350-765.76 350-719.87q0 35.79-22.5 64.37-22.5 28.58-57.5 41.58V-280q0 37.13 26.46 63.56Q322.92-190 360.07-190q37.16 0 63.55-26.44Q450-242.87 450-280v-400q0-62.15 43.92-106.08Q537.85-830 600-830t106.08 43.92Q750-742.15 750-680v333.92q35 13 57.5 41.58t22.5 64.37q0 45.89-32.07 78.01Q765.86-130 720.05-130q-45.82 0-77.93-32.12Q610-194.24 610-240.13q0-35.79 22.5-64.87 22.5-29.08 57.5-41.08V-680q0-37.13-26.46-63.56Q637.08-770 599.93-770q-37.16 0-63.55 26.44Q510-717.13 510-680v400q0 62.15-43.92 106.08Q422.15-130 360-130t-106.08-43.92ZM240-670q20.85 0 35.42-14.58Q290-699.15 290-720t-14.58-35.42Q260.85-770 240-770t-35.42 14.58Q190-740.85 190-720t14.58 35.42Q219.15-670 240-670Zm480 480q20.85 0 35.42-14.58Q770-219.15 770-240t-14.58-35.42Q740.85-290 720-290t-35.42 14.58Q670-260.85 670-240t14.58 35.42Q699.15-190 720-190ZM240-720Zm480 480Z"
+                /></svg
+              ><span class="navListItemText">Routen Vorschläge</span></a
+            >
+          </li>
+        </ul>
+        <div class="sidebarBtnCon">
+          <button
+            class="sidebarBtn"
+            id="createTourBtn"
+            title="Tour erstellen"
+            hidden
+          >
+            <img
+              class="sidebarBtnIcon"
+              src="assets/icons/add.svg"
+              alt="add Tour Icon"
+            /><span class="sidebarBtnText">Tour</span>
+          </button>
+          <button class="sidebarBtn" id="signOutBtn" title="Abmelden" hidden>
+            <img
+              class="sidebarBtnIcon"
+              src="assets/icons/logout.svg"
+              alt="signOut Icon"
+            /><span class="sidebarBtnText">Abmelden</span>
+          </button>
+        </div>
+        <div class="infoCon">
+          <div class="infoConHeader">
+            <span class="infoConHeaderTitle">Nächste Tour</span>
+            <div class="infoConHeaderInfo loading">
+              <span class="infoConHeaderInfoCount">0</span>
+              <img
+                class="infoConHeaderInfoIcon"
+                src="assets/icons/person.svg"
+                alt="person Icon"
+              />
+            </div>
+          </div>
+          <div class="infoConText loading">
+            <span id="infoConDestination">Routen Ziel</span>
+            <span id="infoConDate">Wochentag, 00. Monat</span>
+            <span id="infoConInfo">00km, 0.0h - Information</span>
+          </div>
+          <div class="infoConBtnCon loading">
+            <a id="infoConBtn">Route</a>
+            <button id="infoConVoteBtn">
+              <svg
+                class="infoConVoteBtnIcon"
+                viewBox="0 -960 960 960"
+                xmlns="http://www.w3.org/2000/svg"
+                xml:space="preserve"
+                xmlns:serif="http://www.serif.com/"
+                style="
+                  fill-rule: evenodd;
+                  clip-rule: evenodd;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 1.5;
+                "
+              >
+                <path
+                  d="M827.69-620q28.54 0 50.42 21.89Q900-576.23 900-547.69v64.61q0 6.23-1.31 13.46t-3.92 13.47L780.15-185.69q-8.61 19.23-28.84 32.46T709.23-140H385.38q-29.92 0-51.11-21.19-21.19-21.2-21.19-51.12v-377.77q0-14.46 5.92-27.8 5.92-13.35 15.77-23.2l211.61-210.23q11.93-11.3 27.62-13.92 15.69-2.61 30.07 4.69 14.39 7.31 20.77 21.46 6.39 14.16 2.54 30.08L584.3-620h243.39ZM172.31-140q-29.92 0-51.12-21.19Q100-182.39 100-212.31v-335.38q0-29.92 21.19-51.12Q142.39-620 172.31-620h8.46q29.92 0 51.12 21.19 21.19 21.2 21.19 51.12v335.77q0 29.92-21.19 50.92-21.2 21-51.12 21h-8.46Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main></main>
+    <div class="createNewTourCon isHidden">
+      <div class="createNewTourBox">
+        <div class="createNewTourHeader">
+          <span class="createNewTourTitle"> Neue Tour erstellen </span>
+          <button id="createNewTourCloseBtn">
+            <img
+              class="createNewTourBtnIcon"
+              src="assets/icons/close.svg"
+              alt="Sidebar Icon"
+            />
+          </button>
+        </div>
+        <div class="createNewTourInputCon">
+          <span class="createNewTourInputTitle"> Zielort </span>
+          <input
+            class="createNewTourInput"
+            id="destinationInput"
+            type="text"
+            placeholder="Musterort"
+            required
+          />
+          <span class="createNewTourInputTitle"> Datum </span>
+          <input
+            class="createNewTourInput"
+            id="dateInput"
+            type="text"
+            placeholder="Tag, 00. Monat"
+            required
+          />
+          <span class="createNewTourInputTitle">
+            Zusatzinformation (z.B. Entfernung, Dauer, etc.)
+          </span>
+          <input
+            class="createNewTourInput"
+            id="informationInput"
+            type="text"
+            placeholder="00 km, 0.0 h - Zusatzinformation"
+            required
+          />
+          <span class="createNewTourInputTitle">
+            Routen Link
+          </span>
+          <input
+            class="createNewTourInput"
+            id="routeInput"
+            type="text"
+            placeholder="Google Maps Link"
+            required
+          />
+          <button id="createNewTourBtn">Erstellen</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
