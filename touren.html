@@ -20,7 +20,7 @@
             src="assets/logo/Tour26Logo.png"
             alt="Tour26 Logo"
           />
-          <button id="navHeaderBtn">
+          <button id="navHeaderBtn" title="Navigationsleiste">
             <img
               class="navHeaderBtnIcon"
               src="assets/icons/sidebar.svg"
@@ -109,14 +109,14 @@
             <img
               class="sidebarBtnIcon"
               src="assets/icons/add.svg"
-              alt="add Tour Icon"
+              alt="add-Tour-Icon"
             /><span class="sidebarBtnText">Tour</span>
           </button>
           <button class="sidebarBtn" id="signOutBtn" title="Abmelden" hidden>
             <img
               class="sidebarBtnIcon"
               src="assets/icons/logout.svg"
-              alt="signOut Icon"
+              alt="signOut-Icon"
             /><span class="sidebarBtnText">Abmelden</span>
           </button>
         </div>
@@ -128,7 +128,7 @@
               <img
                 class="infoConHeaderInfoIcon"
                 src="assets/icons/person.svg"
-                alt="person Icon"
+                alt="person-Icon"
               />
             </div>
           </div>
@@ -163,12 +163,22 @@
         </div>
       </div>
     </nav>
-    <main></main>
+    <main>
+      <div class="uidInfoCon">
+        <span id="uidInfoText"></span>
+      </div>
+    </main>
     <div class="createNewTourCon isHidden">
       <div class="createNewTourBox">
         <div class="createNewTourHeader">
-          <span class="createNewTourTitle"> Neue Tour erstellen </span>
-          <button id="createNewTourCloseBtn">
+          <span class="createNewTourTitle"
+            ><img
+              class="createNewTourTitleIcon"
+              src="assets/icons/add.svg"
+              alt="add-Tour-Icon"
+            />Neue Tour erstellen
+          </span>
+          <button id="createNewTourCloseBtn" title="Schließen">
             <img
               class="createNewTourBtnIcon"
               src="assets/icons/close.svg"
@@ -203,14 +213,12 @@
             placeholder="00 km, 0.0 h - Zusatzinformation"
             required
           />
-          <span class="createNewTourInputTitle">
-            Routen Link
-          </span>
+          <span class="createNewTourInputTitle"> Routen Link </span>
           <input
             class="createNewTourInput"
             id="routeInput"
             type="text"
-            placeholder="Google Maps Link"
+            placeholder="Routen Planer Link"
             required
           />
           <button id="createNewTourBtn">Erstellen</button>

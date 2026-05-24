@@ -55,16 +55,7 @@ body {
   justify-content: flex-start;
   font-family: "Roboto", sans-serif;
   background-color: var(--primary-background-color);
-}
-
-main {
-  height: 100%;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding: 0 10px;
+  overflow: hidden;
 }
 
 /* ─── Nav ────────────────────────────────────────────────────────────────────── */
@@ -102,6 +93,10 @@ nav {
 .navHeaderLogo {
   height: 22px;
   width: 73px;
+  opacity: 1;
+  transition:
+    opacity 0.25s ease-in-out,
+    width 0.25s ease-in-out;
 }
 
 #navHeaderBtn,
@@ -114,6 +109,7 @@ nav {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: margin 0.25s ease-in-out;
 }
 
 .navHeaderBtnIcon {
@@ -150,7 +146,7 @@ nav {
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  padding: 0 15px;
+  padding: 0 9px;
   box-sizing: border-box;
   font-size: 14px;
   font-weight: 450;
@@ -171,6 +167,13 @@ nav {
 .navListItemIcon {
   height: 20px;
   width: 20px;
+  flex-shrink: 0;
+  min-width: 20px;
+}
+
+.navListItemText {
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .navListItemBtnActive {
@@ -224,7 +227,9 @@ nav {
 /* ─── Info Box ───────────────────────────────────────────────────────────────── */
 .infoCon {
   width: 100%;
+  min-width: 238px;
   height: auto;
+  max-height: 200px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -236,6 +241,17 @@ nav {
   background-color: var(--sidebar-box-background-color);
   outline: 1px solid var(--sidebar-box-outline-color);
   border-radius: 10px;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    max-height 0.25s ease-in-out,
+    opacity 0.15s ease-out,
+    padding 0.25s ease-in-out,
+    outline-color 0.25s ease-in-out;
+}
+
+.infoCon > * {
+  flex-shrink: 0;
 }
 
 .infoConHeader {
@@ -332,7 +348,17 @@ nav {
 
 /* ─── Loading Animation ──────────────────────────────────────────────────────── */
 .loading {
-  animation: blur-loading 2s infinite;
+  filter: blur(5px);
+  pointer-events: none;
+  transition:
+    filter 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
+}
+
+.infoConText,
+.infoConHeaderInfo,
+.infoConBtnCon {
+  transition: filter 0.4s ease-in-out;
 }
 
 @keyframes blur-loading {
@@ -351,20 +377,36 @@ nav {
 }
 
 .navContainer.collapsed .navHeader {
-  justify-content: center;
+  justify-content: flex-end;
 }
 
-.navContainer.collapsed .navHeaderLogo,
+.navContainer.collapsed .navHeaderLogo {
+  opacity: 0;
+  width: 0;
+}
+
+.navContainer.collapsed #navHeaderBtn {
+  margin: 0 auto;
+  transition: margin 0.25s ease-in-out;
+}
+
 .navContainer.collapsed .navListItemText,
-.navContainer.collapsed .sidebarBtnText,
-.navContainer.collapsed .infoCon {
+.navContainer.collapsed .sidebarBtnText {
   display: none;
+}
+
+.navContainer.collapsed .infoCon {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+  outline-color: transparent;
+  pointer-events: none;
 }
 
 .navContainer.collapsed .navListItem,
 .navContainer.collapsed .sidebarBtn {
-  height: 38px;
-  width: 38px;
+  height: 37px;
+  width: 37px;
 }
 
 .navContainer.collapsed .navListItemBtn {
@@ -398,17 +440,29 @@ nav {
     justify-content: center;
   }
 
-  .navHeaderLogo,
+  .navHeaderLogo {
+    opacity: 0;
+    width: 0;
+    pointer-events: none;
+  }
+
   .navListItemText,
-  .sidebarBtnText,
-  .infoCon {
+  .sidebarBtnText {
     display: none;
+  }
+
+  .infoCon {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    outline-color: transparent;
+    pointer-events: none;
   }
 
   .navListItem,
   .sidebarBtn {
-    height: 38px;
-    width: 38px;
+    height: 37px;
+    width: 37px;
   }
 
   .navListItemBtn {
@@ -434,11 +488,24 @@ nav {
     justify-content: space-between;
   }
 
-  .navContainer.open .navHeaderLogo,
+  .navContainer.open .navHeaderLogo {
+    opacity: 1;
+    width: 73px;
+    pointer-events: auto;
+  }
+
   .navContainer.open .navListItemText,
-  .navContainer.open .sidebarBtnText,
-  .navContainer.open .infoCon {
+  .navContainer.open .sidebarBtnText {
     display: flex;
+  }
+
+  .navContainer.open .infoCon {
+    max-height: 200px;
+    opacity: 1;
+    padding: 10px;
+    gap: 10px;
+    outline-color: var(--sidebar-box-outline-color);
+    pointer-events: auto;
   }
 
   .navContainer.open .navListItem {
@@ -448,7 +515,7 @@ nav {
 
   .navContainer.open .navListItemBtn {
     justify-content: flex-start;
-    padding: 0 15px;
+    padding: 0 10px;
   }
 
   .navContainer.open .sidebarBtnCon {
@@ -473,18 +540,30 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  --webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(20, 20, 25, 0.75) 100%
+  );
+  --webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
 }
 
 .isHidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .createNewTourBox {
   height: auto;
   width: 100%;
-  max-width: 340px;
+  max-width: 400px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -495,6 +574,12 @@ nav {
   padding: 15px;
   gap: 20px;
   box-sizing: border-box;
+  transform: scale(1) translateY(0);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.createNewTourCon.isHidden .createNewTourBox {
+  transform: scale(0.9) translateY(15px);
 }
 
 .createNewTourHeader {
@@ -509,6 +594,15 @@ nav {
   font-size: 18px;
   font-weight: 450;
   color: var(--primary-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.createNewTourTitleIcon {
+  height: 25px;
+  width: 25px;
 }
 
 #createNewTourCloseBtn {
@@ -579,4 +673,44 @@ nav {
 
 #createNewTourBtn:hover {
   background-color: #d5d5d5;
+}
+
+@media (max-width: 465px) {
+  .createNewTourBox {
+    height: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+}
+
+/* MAIN */
+
+main {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.uidInfoCon {
+  position: sticky;
+  bottom: 20px;
+  z-index: 10;
+  margin-top: auto;
+  height: 35px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #70ff02;
+}
+
+#uidInfoText {
+  font-size: 13px;
+  font-weight: 450;
+  color: var(--button-light-hover-background-color);
 }

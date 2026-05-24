@@ -21,6 +21,8 @@ onAuthStateChanged(auth, async (user) => {
   const createTourBtn = document.getElementById("createTourBtn");
   const signOutBtn = document.getElementById("signOutBtn");
 
+  const uidInfoText = document.getElementById("uidInfoText");
+
   if (user) {
     // If user is signed in, redirect to page
     if (isAuthpage) {
@@ -40,6 +42,10 @@ onAuthStateChanged(auth, async (user) => {
           createTourBtn.hidden = false;
         }
       }
+    }
+
+    if (uidInfoText) {
+      uidInfoText.textContent = user.uid;
     }
   } else {
     if (!isAuthpage) {
