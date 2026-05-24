@@ -1,4 +1,4 @@
-# Tour26 🚲
+# Tour26 🚵‍♂️
 A hub for our cycling crew to track, rank, and plan our rides throughout the year.
 
 > [!NOTE]
@@ -12,4 +12,4 @@ A hub for our cycling crew to track, rank, and plan our rides throughout the yea
 - **Route Data:** Archive GPS data, distance, and elevation stats.
 - **Photo Feed:** View shots from every tour.
 
-```Made by Humans```
+```Made with ♥️ by Humans```
