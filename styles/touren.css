@@ -515,7 +515,7 @@ nav {
 
   .navContainer.open .navListItemBtn {
     justify-content: flex-start;
-    padding: 0 10px;
+    padding: 0 9px;
   }
 
   .navContainer.open .sidebarBtnCon {
@@ -531,7 +531,6 @@ nav {
 }
 
 /* ─── Create New Tour Container ──────────────────────────────────────────────── */
-
 .createNewTourCon {
   position: absolute;
   z-index: 9999;
@@ -706,7 +705,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #70ff02;
 }
 
 #uidInfoText {

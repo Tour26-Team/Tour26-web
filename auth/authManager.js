@@ -1,18 +1,13 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {
-  getAuth,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { firebaseConfig } from "../firebaseConfig.js";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const supabase = createClient(
+  "https://zcshqqrjxiharymzesnl.supabase.co",
+  "sb_publishable_kaHcZU4PciFFO5YICmkh_w_YBru5T2X",
+);
 
-// ========== AUTH LISTENER ==========
-onAuthStateChanged(auth, async (user) => {
+// ========== AUTH LISTENER ==========================
+
+supabase.auth.onAuthStateChange((event, session) => {
   const path = window.location.pathname;
 
   const isAuthpage =
@@ -20,32 +15,33 @@ onAuthStateChanged(auth, async (user) => {
 
   const createTourBtn = document.getElementById("createTourBtn");
   const signOutBtn = document.getElementById("signOutBtn");
-
   const uidInfoText = document.getElementById("uidInfoText");
 
-  if (user) {
-    // If user is signed in, redirect to page
+  if (session) {
+    const user = session.user;
+
+    // Redirect to page
     if (isAuthpage) {
       window.location.href = "touren.html";
     }
 
-    // If user is on a different page than auth, handle buttons
+    // handle Content if user is on a different page than auth
     if (!isAuthpage) {
       if (signOutBtn) {
         signOutBtn.hidden = false;
       }
 
-      const token = await user.getIdTokenResult();
+      if (uidInfoText) {
+        uidInfoText.textContent = user.id;
+      }
 
-      if (token.claims.admin) {
+      const isAdmin = user.app_metadata?.role === "admin";
+
+      if (isAdmin) {
         if (createTourBtn) {
           createTourBtn.hidden = false;
         }
       }
-    }
-
-    if (uidInfoText) {
-      uidInfoText.textContent = user.uid;
     }
   } else {
     if (!isAuthpage) {
@@ -54,62 +50,63 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-// ========== BUTTON EVENT LISTENERS ==========
-
+// ========== BUTTON EVENT LISTENERS & AUTH ==========
 const emailInput = document.getElementById("authenticationEmailInput");
 const passwordInput = document.getElementById("authenticationPasswordInput");
 
 // Sign Up
 const authenticationSignUpBtn = document
   .getElementById("authenticationSignUpBtn")
-  ?.addEventListener("click", () => {
+  ?.addEventListener("click", async () => {
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    signUpUser(email, password);
+    if (!email || !password) {
+      alert("Bitte E-Mail und Passwort eingeben!");
+      return;
+    }
+
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      console.error("Error at SignUp:", error.message);
+      return;
+    }
+
+    alert(
+      "Registrierung erfolgreich! Bitte überprüfe dein E-Mail-Postfach, um den Account zu bestätigen.",
+    );
   });
 
 // Sign In
 const authenticationSignInBtn = document
   .getElementById("authenticationSignInBtn")
-  ?.addEventListener("click", () => {
+  ?.addEventListener("click", async () => {
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    signInUser(email, password);
+    if (!email || !password) {
+      alert("Bitte E-Mail und Passwort eingeben!");
+      return;
+    }
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      console.error("Error at SignIn:", error.message);
+      return;
+    }
   });
 
 // Sign Out
 const signOutBtn = document
   .getElementById("signOutBtn")
-  ?.addEventListener("click", () => {
-    signUserOut();
+  ?.addEventListener("click", async () => {
+    const { error } = await supabase.auth.signOut();
   });
-
-// ========== AUTHENTICATION FUNCTIONS ==========
-
-async function signUpUser(email, password) {
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    console.error(error.code, error.message);
-  }
-}
-
-async function signInUser(email, password) {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    console.error(error.code, error.message);
-  }
-}
-
-async function signUserOut() {
-  try {
-    await signOut(auth).then(() => {
-      console.log("User signed out successfully.");
-    });
-  } catch (error) {
-    console.error(error.code, error.message);
-  }
-}
