@@ -4,7 +4,7 @@ A hub for our cycling crew to track, rank, and plan our rides throughout the yea
 > [!NOTE]
 > This website is for private use only by the creator and their friends. It is not intended for public registration or use.
 
-**Website:** https://tour-26.pages.dev/
+**Website:** https://tour26.pages.dev/
 
 ## Features
 - **Planning:** Official tour announcements and a suggestion board for new routes.
