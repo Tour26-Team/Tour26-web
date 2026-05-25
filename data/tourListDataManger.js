@@ -9,7 +9,7 @@ async function getTourList() {
   const { data: mainItems, error: mainError } = await supabase.storage
     .from("touren")
     .list("", {
-      sortBy: { column: "name", order: "asc" },
+      sortBy: { column: "name", order: "desc" },
     });
 
   if (mainError) throw mainError;
