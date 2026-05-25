@@ -8,8 +8,9 @@
     <link rel="icon" href="assets/logo/Tour26_Logo_Small.png" />
 
     <script src="utils.js" defer></script>
-    <script type="module" src="data/nextTourDataManger.js" defer></script>
     <script type="module" src="auth/authManager.js" defer></script>
+    <script type="module" src="data/nextTourDataManger.js" defer></script>
+    <script type="module" src="data/tourListDataManger.js" defer></script>
   </head>
   <body>
     <nav>
@@ -164,6 +165,8 @@
       </div>
     </nav>
     <main>
+      <span class="tourListConTitle">Alle Touren</span>
+      <div id="tourListContainer"></div>
       <div class="uidInfoCon">
         <span id="uidInfoText"></span>
       </div>

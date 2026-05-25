@@ -429,6 +429,16 @@ nav {
     position: fixed;
     z-index: 9998;
     padding: 10px;
+    top: 0;
+    left: 0;
+    --webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+  }
+
+  main {
+    margin-left: 78px;
+    width: calc(100% - 78px);
+    box-sizing: border-box;
   }
 
   .navContainer {
@@ -688,7 +698,7 @@ main {
   height: 100%;
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
   padding: 10px;
@@ -711,4 +721,77 @@ main {
   font-size: 13px;
   font-weight: 450;
   color: var(--button-light-hover-background-color);
+}
+
+/* ─── Tour Cards ─────────────────────────────────────────────────────────────── */
+.tourListConTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-text-color);
+  margin: 20px 0;
+}
+
+#tourListContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 15px;
+}
+
+.tour-card {
+  background-color: transparent;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.tour-collage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.tour-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tour-title {
+  font-size: 15px;
+  font-weight: 550;
+  color: var(--primary-text-color);
+  margin: 0;
+}
+
+.tour-date {
+  font-size: 15px;
+  font-weight: 450;
+  color: var(--primary-text-color-light);
+  margin: 0;
+}
+
+.tour-stats {
+  font-size: 15px;
+  font-weight: 450;
+  color: var(--primary-text-color-light);
+  margin-bottom: 10px;
+}
+
+.tour-route-btn {
+  background-color: #f0f0f0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 7.5px;
+  font-size: 14px;
+  font-weight: 450;
+  transition: background-color 0.2s;
+}
+
+.tour-route-btn:hover {
+  background-color: #e0e0e0;
 }
