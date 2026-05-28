@@ -11,5 +11,3 @@ A hub for our cycling crew to track, rank, and plan our rides throughout the yea
 - **Tier List:** A ranking page to settle which tours were legendary and which were mid.
 - **Route Data:** Archive GPS data, distance, and elevation stats.
 - **Photo Feed:** View shots from every tour.
-
-```Made with ♥️ by Humans```
