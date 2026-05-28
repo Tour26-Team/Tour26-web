@@ -10,6 +10,7 @@
   --button-hover-background-color: #213d1b;
   --button-light-background-color: #3a3c3f;
   --button-light-hover-background-color: #4d5053;
+  --button-white-hover-background-color: #d5d5d5;
 
   --primary-heading-color: #34a853;
   --primary-text-color: #f1f3f4;
@@ -201,8 +202,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  padding: 5px 13px;
+  gap: 6px;
+  padding: 5px 10px;
   font-size: 12px;
   font-weight: 500;
   color: var(--primary-text-color);
@@ -269,8 +270,8 @@ nav {
 }
 
 .infoConHeaderInfoIcon {
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
 }
 
 .infoConHeaderInfoCount {
@@ -319,7 +320,7 @@ nav {
 }
 
 #infoConBtn:hover {
-  background-color: var(--button-hover-background-color);
+  background-color: var(--button-white-hover-background-color);
 }
 
 #infoConVoteBtn {
@@ -340,9 +341,9 @@ nav {
 }
 
 .infoConVoteBtnIcon {
-  height: 18px;
-  width: 18px;
-  fill: var(--primary-text-color-light);
+  height: 21px;
+  width: 21px;
+  fill: none;
   stroke: var(--primary-text-color-light);
 }
 
@@ -623,6 +624,11 @@ nav {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: transform ease-in-out 0.15s;
+}
+
+#createNewTourCloseBtn:hover {
+  transform: rotate(12deg) scale(1.15);
 }
 
 .createNewTourBtnIcon {
@@ -681,7 +687,7 @@ nav {
 }
 
 #createNewTourBtn:hover {
-  background-color: #d5d5d5;
+  background-color: var(--button-white-hover-background-color);
 }
 
 @media (max-width: 465px) {
@@ -707,20 +713,29 @@ main {
 
 .uidInfoCon {
   position: sticky;
-  bottom: 20px;
+  bottom: 10px;
   z-index: 10;
   margin-top: auto;
-  height: 35px;
+  height: 65px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.2) 20%,
+    rgba(0, 0, 0, 0.5) 40%,
+    rgba(0, 0, 0, 0.9)
+  );
+  /* background-color: #34a853; */
+  flex-shrink: 0;
 }
 
 #uidInfoText {
   font-size: 13px;
   font-weight: 450;
-  color: var(--button-light-hover-background-color);
+  color: var(--primary-text-color);
 }
 
 /* ─── Tour Cards ─────────────────────────────────────────────────────────────── */
