@@ -47,16 +47,35 @@ async function getTourList() {
         return null;
       }
 
+      let tourUrl = "";
+      const { data: tourUrlData, error: tourUrlError } = await supabase.storage
+        .from("touren")
+        .createSignedUrl(`${folderName}/tour.webp`, 3600);
+
+      if (!tourUrlError && tourUrlData) {
+        tourUrl = tourUrlData.signedUrl;
+      } else {
+        console.error(
+          `Error while generating Tour-URL for ${folderName}:`,
+          tourUrlError,
+        );
+      }
+
       const { data: jsonBlob, error: jsonError } = await supabase.storage
         .from("touren")
         .download(`${folderName}/info.json`);
 
       let infoData = {
         name: folderName,
-        km: "Unbekannt",
-        dauer: "Unbekannt",
-        datum: "",
-        route: "#",
+        date: "",
+        totalTimeHour: "/",
+        totalTimeMinute: "/",
+        movementTimeHour: "/",
+        movementTimeMinute: "/",
+        range: "Unbekannt",
+        averageSpeed: "/",
+        members: "",
+        routeLink: "#",
       };
 
       if (!jsonError && jsonBlob) {
@@ -71,6 +90,7 @@ async function getTourList() {
       return {
         ...infoData,
         collageUrl: signedUrlData.signedUrl,
+        tourUrl: tourUrl,
       };
     }),
   );
@@ -79,26 +99,92 @@ async function getTourList() {
 }
 
 function renderTourCards(touren) {
-  const container = document.getElementById("tourListContainer"); // Dein <main> Element
+  const container = document.getElementById("tourListContainer");
   if (!container) return;
 
   touren.forEach((tour) => {
-    // Erstelle das Karten-Element
     const card = document.createElement("div");
-    card.className = "tour-card";
+    card.className = "tourCard";
 
-    // Befülle die Karte mit der exakten Struktur aus deinem Screenshot
     card.innerHTML = `
-      <img src="${tour.collageUrl}" alt="${tour.name}" class="tour-collage">
-      <div class="tour-info">
-        <h2 class="tour-title">${tour.name}</h2>
-        <p class="tour-date">${tour.datum}</p>
-        <p class="tour-stats">${tour.km}, ${tour.dauer}</p>
-        <a href="${tour.route}" target="_blank" class="tour-route-btn">Route</a>
-      </div>
+      <div class="tourCardHeader">
+            <div class="tourCardHeaderTitleCon">
+              <span class="tourCardHeaderTitle">
+                <img
+                  class="tourCardHeaderTitleIcon"
+                  src="assets/icons/bike.svg"
+                  alt="bike-Icon"
+                />${tour.name}</span
+              >
+              <span class="tourCardHeaderDate">${tour.date}</span>
+            </div>
+            <div class="tourCardHeaderInfoCon">
+              <div class="tourCardHeaderInfoConCard">
+                <span class="tourCardHeaderInfoConCardTitle">Gesamtzeit</span>
+                <span class="tourCardHeaderInfoConCardInfo"
+                  >${tour.totalTimeHour} <span class="tourCardInfoValue">Std</span> ${tour.totalTimeMinute}
+                  <span class="tourCardInfoValue">M</span></span
+                >
+              </div>
+              <div class="tourCardHeaderInfoConCard">
+                <span class="tourCardHeaderInfoConCardTitle"
+                  >Bewegungszeit</span
+                >
+                <span class="tourCardHeaderInfoConCardInfo"
+                  >${tour.movementTimeHour} <span class="tourCardInfoValue">Std</span> ${tour.movementTimeMinute}
+                  <span class="tourCardInfoValue">M</span></span
+                >
+              </div>
+              <div class="tourCardHeaderInfoConCard">
+                <span class="tourCardHeaderInfoConCardTitle">Distanz</span>
+                <span class="tourCardHeaderInfoConCardInfo"
+                  >${tour.range} <span class="tourCardInfoValue">km</span>
+                </span>
+              </div>
+              <div class="tourCardHeaderInfoConCard">
+                <span class="tourCardHeaderInfoConCardTitle"
+                  >Ø Geschwindigkeit</span
+                >
+                <span class="tourCardHeaderInfoConCardInfo"
+                  >${tour.averageSpeed} <span class="tourCardInfoValue">km/h</span>
+                </span>
+              </div>
+              <div class="tourCardHeaderInfoConCard">
+                <span class="tourCardHeaderInfoConCardTitle">Mitglieder</span>
+                <span class="tourCardHeaderInfoConCardInfo">${tour.members}</span>
+              </div>
+            </div>
+          </div>
+          <div class="tourCardImageCon">
+            <img
+              class="tourCardImageConTour"
+              src="${tour.tourUrl}"
+              alt="tour-image"
+            />
+            <img
+              class="tourCardImageConCollage"
+              src="${tour.collageUrl}"
+              alt="collage-image"
+            />
+          </div>
+          <div class="tourCardBtnCon">
+            <a class="tourCardBtn" href="${tour.routeLink}" title="Routen-Link"
+              ><img
+                class="tourCardBtnIcon"
+                src="assets/icons/map.svg"
+                alt="map-Icon"
+              />Route ansehen</a
+            >
+            <a class="tourCardBtn" id="seeTourGallery" href="#" title="Tour-Galerie"
+              ><img
+                class="tourCardBtnIcon"
+                src="assets/icons/photo.svg"
+                alt="map-Icon"
+              />Tour-Galerie ansehen</a
+            >
+          </div>
     `;
 
-    // In das <main>-Tag einfügen
     container.appendChild(card);
   });
 }
