@@ -1,13 +1,20 @@
-# Tour26 🚵‍♂️
-A hub for our cycling crew to track, rank, and plan our rides throughout the year.
+Tour26 is a customizable framework for groups to centralize tracked tours, share photos, view statistics, and rank their trips in a Tier List.
 
-> [!NOTE]
-> This website is for private use only by the creator and their friends. It is not intended for public registration or use.
+## Setup and Deployment
 
-**Website:** https://tour26.pages.dev/
+### 1. Create a Supabase Project
+- Sign up or log in at [Supabase.com](https://supabase.com/)
+- Create a new project
+- next Steps coming soon
 
-## Features
-- **Planning:** Official tour announcements and a suggestion board for new routes.
-- **Tier List:** A ranking page to settle which tours were legendary and which were mid.
-- **Route Data:** Archive GPS data, distance, and elevation stats.
-- **Photo Feed:** View shots from every tour.
+### 2. Configure Environment Variables
+- Create a new file and name it `.env`.
+- Paste the following template into the file and insert your Supabase credentials:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key`
+```
+### 3. Deploy the Website
+You can now host this project using providers like Netlify or Cloudflare Pages:
+- Upload your configured Project Folder to your provider
+- Add the environment variables listed above `(NEXT_PUBLIC_SUPABASE_URL, etc.)` in the provider's project settings dashboard.
