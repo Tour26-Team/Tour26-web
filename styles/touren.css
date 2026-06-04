@@ -740,7 +740,8 @@ main {
 
 /* ─── Tour Cards ─────────────────────────────────────────────────────────────── */
 .tourListConTitle {
-  width: 650px;
+  max-width: 650px;
+  width: 100%;
   font-size: 18px;
   font-weight: bold;
   color: var(--primary-text-color);
@@ -758,7 +759,8 @@ main {
 
 .tourCard {
   height: auto;
-  width: 650px;
+  max-width: 650px;
+  width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
