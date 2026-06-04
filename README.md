@@ -34,6 +34,7 @@ If you notice any bugs or missing features, you can let us know by opening an is
     ```
     - `collage.jpg` (square collage)
     - `tour.webp` (tour image)
+- **Database Configuration coming soon**
 
 ### 2. Configure Environment Variables
 - Create a new file and name it `.env`
