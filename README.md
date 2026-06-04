@@ -1,5 +1,8 @@
 Tour26 is a customizable framework for groups to centralize tracked tours, share photos, view statistics, and rank their trips in a Tier List.
 
+## Issues
+If you notice any bugs or missing features, you can let us know by opening an issue [here.](https://github.com/Tour26-Team/Tour26-web/issues)
+
 ## Setup and Deployment
 
 ### 1. Create a Supabase Project
