@@ -173,14 +173,14 @@ function renderTourCards(touren) {
                 class="tourCardBtnIcon"
                 src="assets/icons/map.svg"
                 alt="map-Icon"
-              />Route ansehen</a
+              /><span class="btnText">Route ansehen</span></a
             >
             <a class="tourCardBtn" id="seeTourGallery" href="#" title="Tour-Galerie"
               ><img
                 class="tourCardBtnIcon"
                 src="assets/icons/photo.svg"
                 alt="map-Icon"
-              />Tour-Galerie ansehen</a
+              /><span class="btnText">Tour-Galerie ansehen</span></a
             >
           </div>
     `;
