@@ -112,6 +112,13 @@ nav {
   user-select: none;
 }
 
+.navHeaderLogoCon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 .navHeaderLogo {
   width: 89px;
   height: 28px;

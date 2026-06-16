@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alle Touren | Tour26</title>
+    <title>Galerie | Tour26</title>
     <link rel="stylesheet" href="styles/touren.css" />
+    <link rel="stylesheet" href="styles/gallery.css" />
     <link rel="icon" href="assets/logo/tour26-favicon.png" />
 
     <script src="utils.js" defer></script>
     <script type="module" src="auth/authManager.js" defer></script>
     <script type="module" src="data/nextTourDataManger.js" defer></script>
-    <script type="module" src="data/tourListDataManger.js" defer></script>
+    <script type="module" src="data/tourGalleryManager.js" defer></script>
   </head>
   <body>
     <nav>
@@ -154,8 +155,8 @@
       </div>
     </nav>
     <main>
-      <span class="tourListConTitle">Alle Touren</span>
-      <div id="tourListContainer"></div>
+      <span class="tourListConTitle" id="galleryTitle">Galerie</span>
+      <div id="galleryContainer"></div>
       <div class="uidInfoCon">
         <span id="uidInfoText"></span>
       </div>
